@@ -9,8 +9,7 @@ setup(
     version='1.0.0-alpha.1',
     author='David Runemalm, 2024',
     author_email='david.runemalm@gmail.com',
-    description=
-    'A py-domain-driven-design_AND_TYPE for Python.',
+    description="A domain-driven design library for Python.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url='https://github.com/runemalm/py-domain-driven-design',
@@ -19,10 +18,14 @@ setup(
         "Bug Tracker": "https://github.com/runemalm/py-domain-driven-design/issues",
     },
     package_dir={'': 'src'},
-    packages = find_packages(
-        where = 'src',
-        include = ['ddd*', ],
-        exclude = ['tests*', ]
+    packages=find_packages(
+        where="src",
+        include=[
+            "ddd*",
+        ],
+        exclude=[
+            "tests*",
+        ],
     ),
     license='GNU General Public License v3.0',
     install_requires=[
