@@ -1,11 +1,12 @@
-from abc import ABC, abstractmethod
-from typing import Generic, List, TypeVar
+from typing import List, TypeVar
 
-T = TypeVar('T')
+from ddd.infrastructure.repository.irepository import IRepository
+
+T = TypeVar("T")
 
 
 class DatastoreRepositoryBase(IRepository[T]):
-    def get_by_id(self, id: str) -> T:
+    def get(self, id: str) -> T:
         raise NotImplementedError()
 
     def save(self, entity: T) -> T:

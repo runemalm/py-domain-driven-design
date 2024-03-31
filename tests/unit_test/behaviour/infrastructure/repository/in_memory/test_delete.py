@@ -1,8 +1,9 @@
 import pytest
 
 from unit_test.behaviour.domain.model.vehicle.vehicle import Vehicle
-from unit_test.behaviour.infrastructure.repository.in_memory.vehicle_repository import \
-    InMemoryVehicleRepository
+from unit_test.behaviour.infrastructure.repository.in_memory.vehicle_repository import (
+    InMemoryVehicleRepository,
+)
 from unit_test.behaviour.unit_test_case import UnitTestCase
 
 
@@ -37,5 +38,7 @@ class TestDelete(UnitTestCase):
         vehicle_repository.save(vehicle_1)
 
         # act + assert
-        with pytest.raises(KeyError, match="No entity found with ID: 'non-existing-id'"):
+        with pytest.raises(
+            KeyError, match="No entity found with ID: 'non-existing-id'"
+        ):
             vehicle_repository.delete(id="non-existing-id")

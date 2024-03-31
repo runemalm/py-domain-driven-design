@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Generic, List, TypeVar
 
-T = TypeVar('T')
+T = TypeVar("T")
 
 
 class IRepository(ABC, Generic[T]):

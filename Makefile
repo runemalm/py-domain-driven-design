@@ -63,6 +63,30 @@ sphinx-autobuild: ## activate autobuild of docs
 	pipenv run sphinx-autobuild docs docs/_build/html --watch $(SRC)
 
 ################################################################################
+# PRE-COMMIT HOOKS
+################################################################################
+
+.PHONY: black
+black: ## run black auto-formatting
+	pipenv run black $(SRC) $(TESTS)
+
+.PHONY: black-check
+black-check: ## check code don't violate black formatting rules
+	pipenv run black --check $(SRC)
+
+.PHONY: flake
+flake: ## lint code with flake
+	pipenv run flake8 $(SRC)
+
+.PHONY: pre-commit-install
+pre-commit-install: ## install the pre-commit git hook
+	pipenv run pre-commit install
+
+.PHONY: pre-commit-run
+pre-commit-run: ## run the pre-commit hooks
+	pipenv run pre-commit run --all-files
+
+################################################################################
 # PIPENV
 ################################################################################
 

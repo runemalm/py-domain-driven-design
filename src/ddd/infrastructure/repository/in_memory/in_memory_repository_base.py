@@ -4,7 +4,7 @@ import copy
 
 from ddd.infrastructure.repository.irepository import IRepository
 
-T = TypeVar('T')
+T = TypeVar("T")
 
 
 class InMemoryRepositoryBase(IRepository[T]):

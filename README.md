@@ -21,13 +21,13 @@ This library is compatible and tested with the following Python versions:
 - Python 3.12
 
 [![Push on master](https://github.com/runemalm/py-domain-driven-design/actions/workflows/master.yml/badge.svg?branch=master)](https://github.com/runemalm/py-domain-driven-design/actions/workflows/master.yml)
-  
+
 ### Installation:
-  
+
 ```bash
 $ pip install py-domain-driven-design
 ```
-  
+
 ### Example - xxx
 
 ```python
@@ -35,15 +35,15 @@ $ pip install py-domain-driven-design
 ```
 
 ### Documentation:
-  
+
 You can find the latest documentation at [readthedocs](https://py-domain-driven-design.readthedocs.io/en/latest/).
 
 ### Contribution:
-  
+
 If you want to contribute to the code base, create a pull request on the develop branch.
 
 We follow the [git flow](https://nvie.com/posts/a-successful-git-branching-model/) branching model.
-  
+
 ### Release Notes
 
 #### [1.0.0-alpha.1](https://github.com/runemalm/py-domain-driven-design/releases/tag/v1.0.0-alpha.1) (2024-xx-xx)
