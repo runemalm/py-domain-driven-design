@@ -1,7 +1,7 @@
 import pytest
 
 from unit_test.behaviour.domain.model.vehicle.vehicle import Vehicle
-from unit_test.behaviour.infrastructure.repository.in_memory.repository import \
+from unit_test.behaviour.infrastructure.repository.in_memory.vehicle_repository import \
     InMemoryVehicleRepository
 from unit_test.behaviour.unit_test_case import UnitTestCase
 
