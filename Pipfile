@@ -4,6 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+google-cloud-datastore = "*"
 
 [dev-packages]
 pytest = "7.4.4"
