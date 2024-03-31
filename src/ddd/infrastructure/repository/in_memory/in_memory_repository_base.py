@@ -21,7 +21,6 @@ class InMemoryRepositoryBase(IRepository[T]):
         if not entity.id:
             raise AttributeError("The entity needs to have an ID.")
         with self._lock:
-            # Assuming the entity has an 'id' attribute
             self._entities[entity.id] = copy.deepcopy(entity)
             return copy.deepcopy(entity)
 
