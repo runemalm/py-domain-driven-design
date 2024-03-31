@@ -2,9 +2,10 @@ from typing import Dict, List, TypeVar
 from threading import Lock
 import copy
 
+from ddd.domain.model.entity import Entity
 from ddd.infrastructure.repository.irepository import IRepository
 
-T = TypeVar("T")
+T = TypeVar("T", bound=Entity)
 
 
 class InMemoryRepositoryBase(IRepository[T]):
