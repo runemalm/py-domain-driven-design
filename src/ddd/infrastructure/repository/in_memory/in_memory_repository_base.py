@@ -3,6 +3,8 @@ from threading import Lock
 import copy
 
 from ddd.domain.model.entity import Entity
+from ddd.domain.model.exceptions.entity_not_found_exception import \
+    EntityNotFoundException
 from ddd.infrastructure.repository.irepository import IRepository
 
 T = TypeVar("T", bound=Entity)
@@ -32,5 +34,5 @@ class InMemoryRepositoryBase(IRepository[T]):
     def delete(self, id: str):
         with self._lock:
             if id not in self._entities:
-                raise KeyError(f"No entity found with ID: '{id}'")
+                raise EntityNotFoundException(f"No entity found with ID: '{id}'")
             del self._entities[id]

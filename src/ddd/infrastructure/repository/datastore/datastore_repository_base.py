@@ -1,6 +1,9 @@
 from abc import ABC, abstractmethod
 from google.cloud import datastore
 from typing import Dict, List, TypeVar
+
+from ddd.domain.model.exceptions.entity_not_found_exception import \
+    EntityNotFoundException
 from ddd.infrastructure.repository.irepository import IRepository
 from ddd.domain.model.entity import Entity
 
@@ -33,7 +36,11 @@ class DatastoreRepositoryBase(IRepository[T], ABC):
 
     def delete(self, id: str):
         key = self.client.key(self.kind, id)
-        self.client.delete(key)
+        entity = self.client.get(key)
+        if entity:
+            self.client.delete(key)
+        else:
+            raise EntityNotFoundException(f"No entity found with ID: '{id}'")
 
     @abstractmethod
     def _from_datastore(self, entity: datastore.Entity) -> T:
