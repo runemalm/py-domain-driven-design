@@ -34,6 +34,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Install Google Cloud SDK and Datastore emulator
+        run: |
+          sudo apt-get update
+          sudo apt-get install google-cloud-cli-datastore-emulator
+
       - name: Run unittests
         uses: ./.github/actions/unittests
         with:
