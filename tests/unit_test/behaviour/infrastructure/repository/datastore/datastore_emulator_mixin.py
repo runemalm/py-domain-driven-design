@@ -25,6 +25,9 @@ class DatastoreEmulatorMixin:
             stderr=subprocess.PIPE,
         )
 
+        print(self.emulator_process.stdout.read())
+        print(self.emulator_process.stderr.read())
+
         # Poll the emulator's health check endpoint until it responds successfully
         health_check_url = f"http://localhost:{port}"
         max_attempts = 20
