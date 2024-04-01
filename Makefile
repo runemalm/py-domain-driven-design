@@ -63,6 +63,22 @@ sphinx-autobuild: ## activate autobuild of docs
 	pipenv run sphinx-autobuild docs docs/_build/html --watch $(SRC)
 
 ################################################################################
+# ACT
+################################################################################
+
+.PHONY: act
+act-run: ## run the full workflow
+	act -P ubuntu-latest=nektos/act-environments-ubuntu:22.04
+
+.PHONY: act-pre-commit
+act-pre-commit: ## run the pre-commit job
+	act -P ubuntu-latest=nektos/act-environments-ubuntu:22.04  -j pre-commit
+
+.PHONY: act-unittests
+act-unittests: ## run the unittests job
+	act -P ubuntu-latest=nektos/act-environments-ubuntu:22.04 -j unittests
+
+################################################################################
 # PRE-COMMIT HOOKS
 ################################################################################
 
