@@ -36,7 +36,8 @@ jobs:
 
       - name: Install Datastore emulator
         run: |
-          sudo gcloud components install cloud-datastore-emulator --quiet
+          sudo apt-get update
+          sudo apt-get install google-cloud-cli-datastore-emulator
 
       - name: Run unittests
         uses: ./.github/actions/unittests
