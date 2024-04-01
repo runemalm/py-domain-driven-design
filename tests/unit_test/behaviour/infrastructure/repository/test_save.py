@@ -3,12 +3,15 @@ from abc import ABC
 import pytest
 
 from unit_test.behaviour.domain.model.vehicle.vehicle import Vehicle
-from unit_test.behaviour.infrastructure.repository.datastore.datastore_emulator_mixin import \
-    DatastoreEmulatorMixin
-from unit_test.behaviour.infrastructure.repository.datastore.vehicle_repository import \
-    DatastoreVehicleRepository
-from unit_test.behaviour.infrastructure.repository.in_memory.vehicle_repository import \
-    InMemoryVehicleRepository
+from unit_test.behaviour.infrastructure.repository.datastore.datastore_emulator_mixin import (
+    DatastoreEmulatorMixin,
+)
+from unit_test.behaviour.infrastructure.repository.datastore.vehicle_repository import (
+    DatastoreVehicleRepository,
+)
+from unit_test.behaviour.infrastructure.repository.in_memory.vehicle_repository import (
+    InMemoryVehicleRepository,
+)
 from unit_test.behaviour.unit_test_case import UnitTestCase
 
 

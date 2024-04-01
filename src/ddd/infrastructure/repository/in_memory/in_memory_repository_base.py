@@ -3,8 +3,9 @@ from threading import Lock
 import copy
 
 from ddd.domain.model.entity import Entity
-from ddd.domain.model.exceptions.entity_not_found_exception import \
-    EntityNotFoundException
+from ddd.domain.model.exceptions.entity_not_found_exception import (
+    EntityNotFoundException,
+)
 from ddd.infrastructure.repository.irepository import IRepository
 
 T = TypeVar("T", bound=Entity)

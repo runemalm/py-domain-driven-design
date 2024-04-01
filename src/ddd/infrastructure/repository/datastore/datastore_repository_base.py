@@ -2,8 +2,9 @@ from abc import ABC, abstractmethod
 from google.cloud import datastore
 from typing import Dict, List, TypeVar
 
-from ddd.domain.model.exceptions.entity_not_found_exception import \
-    EntityNotFoundException
+from ddd.domain.model.exceptions.entity_not_found_exception import (
+    EntityNotFoundException,
+)
 from ddd.infrastructure.repository.irepository import IRepository
 from ddd.domain.model.entity import Entity
 
