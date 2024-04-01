@@ -37,7 +37,7 @@ jobs:
       - name: Install Google Cloud SDK and Datastore emulator
         run: |
           sudo apt-get update
-          sudo apt-get install google-cloud-cli-datastore-emulator
+          sudo apt-get install google-cloud-sdk google-cloud-sdk-datastore-emulator
 
       - name: Run unittests
         uses: ./.github/actions/unittests
