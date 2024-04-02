@@ -58,6 +58,7 @@ runs:
         source ./google-cloud-sdk/path.bash.inc
         # Install the Datastore emulator component
         gcloud components install beta cloud-datastore-emulator --quiet
+        sudo apt-get install google-cloud-cli-datastore-emulator
       shell: bash
 
     - name: Run unittests
