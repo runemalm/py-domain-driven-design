@@ -14,6 +14,8 @@ runs:
     - name: Install Google Cloud SDK and Datastore emulator
       run: |
         # Install the datastore emulator
+        sudo apt-get update
+        apt-cache search datastore-emulator
         sudo apt-get install google-cloud-cli-datastore-emulator
       shell: bash
 
