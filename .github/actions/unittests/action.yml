@@ -57,7 +57,7 @@ runs:
         ./google-cloud-sdk/install.sh --quiet
         source ./google-cloud-sdk/path.bash.inc
         # Install the Datastore emulator component
-        gcloud components install cloud-datastore-emulator --quiet
+        gcloud components install beta cloud-datastore-emulator --quiet
       shell: bash
 
     - name: Run unittests
