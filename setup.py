@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="py-domain-driven-design",
-    version="1.0.0-alpha.1",
+    version="1.0.0-alpha.2",
     author="David Runemalm, 2024",
     author_email="david.runemalm@gmail.com",
     description="A domain-driven design library for Python.",
