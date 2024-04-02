@@ -20,6 +20,7 @@ runs:
         source ./google-cloud-sdk/path.bash.inc
         # Install the Datastore emulator component
         gcloud components install beta cloud-datastore-emulator --quiet
+        echo "source $PWD/google-cloud-sdk/path.bash.inc" >> $GITHUB_ENV
       shell: bash
 
     - name: Set Google Cloud Project
@@ -28,7 +29,7 @@ runs:
 
     - name: Start Datastore Emulator
       run: |
-        echo $GITHUB_ENV
+        source $GITHUB_ENV
         gcloud beta emulators datastore start --project=test-project-id --host-port=localhost:9998 --no-store-on-disk
       shell: bash
 
@@ -72,5 +73,6 @@ runs:
 
     - name: Run unittests
       run: |
+        source $GITHUB_ENV
         PYTHONPATH=./src:./tests pipenv run pytest ./tests
       shell: bash
