@@ -10,6 +10,7 @@ HOME := $(shell echo ~)
 PWD := $(shell pwd)
 SRC := $(PWD)/src
 TESTS := $(PWD)/tests
+DOCS := $(PWD)/docs
 
 # Load env file
 include env.make
@@ -56,7 +57,8 @@ upload: ## upload package to pypi repository
 
 .PHONY: sphinx-rebuild
 sphinx-rebuild: ## re-build the sphinx docs
-	make -C docs clean && make -C docs html
+	cd $(DOCS) && \
+	pipenv run make clean && pipenv run make html
 
 .PHONY: sphinx-autobuild
 sphinx-autobuild: ## activate autobuild of docs
