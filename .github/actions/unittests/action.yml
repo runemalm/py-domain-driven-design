@@ -20,9 +20,7 @@ runs:
         source ./google-cloud-sdk/path.bash.inc
         # Install the Datastore emulator component
         gcloud components install beta cloud-datastore-emulator --quiet
-        gcloud beta --help
-        gcloud beta emulators --help
-        gcloud beta emulators datastore --help
+        gcloud beta emulators datastore start --host-port=localhost:9998 --no-store-on-disk
       shell: bash
 
     - name: Install .python-version and ${{ inputs.python-version }}
