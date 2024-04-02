@@ -10,6 +10,7 @@ HOME := $(shell echo ~)
 PWD := $(shell pwd)
 SRC := $(PWD)/src
 TESTS := $(PWD)/tests
+DOCS := $(PWD)/docs
 
 # Load env file
 include env.make
@@ -56,11 +57,52 @@ upload: ## upload package to pypi repository
 
 .PHONY: sphinx-rebuild
 sphinx-rebuild: ## re-build the sphinx docs
-	make -C docs clean && make -C docs html
+	cd $(DOCS) && \
+	pipenv run make clean && pipenv run make html
 
 .PHONY: sphinx-autobuild
 sphinx-autobuild: ## activate autobuild of docs
 	pipenv run sphinx-autobuild docs docs/_build/html --watch $(SRC)
+
+################################################################################
+# ACT
+################################################################################
+
+.PHONY: act
+act-run: ## run the full workflow
+	act -P ubuntu-latest=nektos/act-environments-ubuntu:18.04
+
+.PHONY: act-pre-commit
+act-pre-commit: ## run the pre-commit job
+	act -P ubuntu-latest=nektos/act-environments-ubuntu:18.04  -j pre-commit
+
+.PHONY: act-unittests
+act-unittests: ## run the unittests job
+	act -P ubuntu-latest=nektos/act-environments-ubuntu:18.04 -j unittests
+
+################################################################################
+# PRE-COMMIT HOOKS
+################################################################################
+
+.PHONY: black
+black: ## run black auto-formatting
+	pipenv run black $(SRC) $(TESTS)
+
+.PHONY: black-check
+black-check: ## check code don't violate black formatting rules
+	pipenv run black --check $(SRC)
+
+.PHONY: flake
+flake: ## lint code with flake
+	pipenv run flake8 $(SRC)
+
+.PHONY: pre-commit-install
+pre-commit-install: ## install the pre-commit git hook
+	pipenv run pre-commit install
+
+.PHONY: pre-commit-run
+pre-commit-run: ## run the pre-commit hooks
+	pipenv run pre-commit run --all-files
 
 ################################################################################
 # PIPENV

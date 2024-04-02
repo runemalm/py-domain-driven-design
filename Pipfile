@@ -4,6 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+google-cloud-datastore = "*"
 
 [dev-packages]
 pytest = "7.4.4"
@@ -12,6 +13,8 @@ sphinx-rtd-theme = "2.0.0"
 sphinx-autobuild = "2021.3.14"
 sphinxcontrib-napoleon = "0.7"
 wheel = "0.41.2"
+pre-commit = "*"
+requests = "*"
 
 [requires]
 python_version = ">=3.7"
