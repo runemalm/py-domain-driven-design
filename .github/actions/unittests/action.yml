@@ -11,6 +11,18 @@ runs:
     - name: Checkout code
       uses: actions/checkout@v4
 
+    - name: Install Google Cloud SDK and Datastore emulator
+      run: |
+        # Download and install the Google Cloud SDK
+        curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-470.0.0-linux-x86_64.tar.gz
+        tar -xzf google-cloud-cli-470.0.0-linux-x86_64.tar.gz
+        ./google-cloud-sdk/install.sh --quiet
+        source ./google-cloud-sdk/path.bash.inc
+        # Install the Datastore emulator component
+        gcloud components install beta cloud-datastore-emulator --quiet
+        sudo apt-get install google-cloud-cli-datastore-emulator
+      shell: bash
+
     - name: Install .python-version and ${{ inputs.python-version }}
       uses: "gabrielfalcao/pyenv-action@v18"
       with:
@@ -47,18 +59,6 @@ runs:
           echo "Python ${{ inputs.python-version }} is not being used. Exiting workflow."
           exit 1
         fi
-      shell: bash
-
-    - name: Install Google Cloud SDK and Datastore emulator
-      run: |
-        # Download and install the Google Cloud SDK
-        curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-470.0.0-linux-x86_64.tar.gz
-        tar -xzf google-cloud-cli-470.0.0-linux-x86_64.tar.gz
-        ./google-cloud-sdk/install.sh --quiet
-        source ./google-cloud-sdk/path.bash.inc
-        # Install the Datastore emulator component
-        gcloud components install beta cloud-datastore-emulator --quiet
-        sudo apt-get install google-cloud-cli-datastore-emulator
       shell: bash
 
     - name: Run unittests
