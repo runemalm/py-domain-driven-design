@@ -27,7 +27,9 @@ runs:
       shell: bash
 
     - name: Start Datastore Emulator
-      run: gcloud beta emulators datastore start --host-port=localhost:9998 --no-store-on-disk
+      run: |
+        echo $GITHUB_ENV
+        gcloud beta emulators datastore start --project=test-project-id --host-port=localhost:9998 --no-store-on-disk
       shell: bash
 
     - name: Install .python-version and ${{ inputs.python-version }}
