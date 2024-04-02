@@ -24,11 +24,6 @@ runs:
         echo "PATH=$PATH:$PWD/google-cloud-sdk/bin" >> $GITHUB_ENV
       shell: bash
 
-    - name: Start Datastore Emulator
-      run: |
-        gcloud beta emulators datastore start --project=test-project-id --host-port=localhost:9998 --no-store-on-disk
-      shell: bash
-
     - name: Install .python-version and ${{ inputs.python-version }}
       uses: "gabrielfalcao/pyenv-action@v18"
       with:
