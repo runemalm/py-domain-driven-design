@@ -18,6 +18,7 @@ class DatastoreEmulatorMixin:
                 "emulators",
                 "datastore",
                 "start",
+                "--project=test-project-id",
                 f"--host-port=localhost:{port}",
                 "--no-store-on-disk",
             ],
@@ -36,7 +37,7 @@ class DatastoreEmulatorMixin:
                 response = requests.get(health_check_url)
                 if response.status_code == 200:
                     self.datastore_client = datastore.Client(
-                        project="test-project",
+                        project="test-project-id",
                         client_options={"api_endpoint": f"http://localhost:{port}"},
                     )
                     break
