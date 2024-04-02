@@ -1,3 +1,58 @@
+The IRepository Interface
+-------------------------
+
+The ``IRepository`` interface provides a template for implementing basic CRUD operations in repository classes. It uses generics to allow for flexibility in working with different entity types while maintaining type safety:
+
+.. code-block:: python
+
+    from abc import ABC, abstractmethod
+    from typing import Generic, List, TypeVar
+
+    T = TypeVar("T")
+
+    class IRepository(ABC, Generic[T]):
+        @abstractmethod
+        def get(self, id: str) -> T:
+            pass
+
+        @abstractmethod
+        def save(self, entity: T) -> T:
+            pass
+
+        @abstractmethod
+        def find_all(self) -> List[T]:
+            pass
+
+        @abstractmethod
+        def delete(self, id: str):
+            pass
+
+Defining a Custom Repository Interface
+--------------------------------------
+
+To create a custom repository interface, you can extend the generic ``IRepository`` interface and add any domain-specific methods that are needed. For example, here's how you can define a custom repository interface for the ``Vehicle`` entity:
+
+.. code-block:: python
+
+    from typing import List
+    from abc import ABC, abstractmethod
+    from carbusiness.domain.model.vehicle.vehicle import Vehicle
+    from ddd.infrastructure.repository.irepository import IRepository
+
+    class IVehicleRepository(IRepository[Vehicle], ABC):
+        @abstractmethod
+        def find_with_colors(self, colors: List[str]) -> List[Vehicle]:
+            """
+            Find vehicles by a list of colors.
+
+            :param colors: List of colors to search for.
+            :return: List of vehicles with the specified colors.
+            """
+            pass
+
+In this example, the ``IVehicleRepository`` interface extends ``IRepository[Vehicle]`` to indicate that it is a repository for ``Vehicle`` entities. The ``find_with_colors`` method is an abstract method that must be implemented by any concrete class that inherits from ``IVehicleRepository``. This method is designed to return a list of ``Vehicle`` instances that match any of the specified colors.
+
+
 Using InMemoryRepositoryBase
 -----------------------------
 
