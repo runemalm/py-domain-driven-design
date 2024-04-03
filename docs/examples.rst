@@ -27,8 +27,8 @@ The ``IRepository`` interface provides a template for implementing basic CRUD op
         def delete(self, id: str):
             pass
 
-Defining a Custom Repository Interface
---------------------------------------
+Extending the IRepository interface
+-----------------------------------
 
 To create a custom repository interface, you can extend the generic ``IRepository`` interface and add any domain-specific methods that are needed. For example, here's how you can define a custom repository interface for the ``Vehicle`` entity:
 
@@ -36,7 +36,7 @@ To create a custom repository interface, you can extend the generic ``IRepositor
 
     from typing import List
     from abc import ABC, abstractmethod
-    from carbusiness.domain.model.vehicle.vehicle import Vehicle
+    from motorbusiness.domain.model.vehicle.vehicle import Vehicle
     from ddd.infrastructure.repository.irepository import IRepository
 
     class IVehicleRepository(IRepository[Vehicle], ABC):
@@ -62,8 +62,8 @@ Here's an example demonstrating how to subclass `InMemoryRepositoryBase` for the
 
     from typing import List
     from ddd.infrastructure.repository.in_memory.in_memory_repository_base import InMemoryRepositoryBase
-    from carbusiness.domain.model.vehicle.ivehicle_repository import IVehicleRepository
-    from carbusiness.domain.model.vehicle.vehicle import Vehicle
+    from motorbusiness.domain.model.vehicle.ivehicle_repository import IVehicleRepository
+    from motorbusiness.domain.model.vehicle.vehicle import Vehicle
 
     class InMemoryVehicleRepository(InMemoryRepositoryBase[Vehicle], IVehicleRepository):
         def find_with_colors(self, colors: List[str]) -> List[Vehicle]:
@@ -95,8 +95,8 @@ Here's an example demonstrating how to subclass `DatastoreRepositoryBase` for th
 
     from google.cloud import datastore
     from ddd.infrastructure.repository.datastore.datastore_repository_base import DatastoreRepositoryBase
-    from carbusiness.domain.model.vehicle.ivehicle_repository import IVehicleRepository
-    from carbusiness.domain.model.vehicle.vehicle import Vehicle
+    from motorbusiness.domain.model.vehicle.ivehicle_repository import IVehicleRepository
+    from motorbusiness.domain.model.vehicle.vehicle import Vehicle
 
     class DatastoreVehicleRepository(DatastoreRepositoryBase[Vehicle], IVehicleRepository):
         def find_with_colors(self, colors: List[str]) -> List[Vehicle]:
